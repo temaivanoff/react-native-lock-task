@@ -16,7 +16,7 @@
 ```diff
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example">
+    package="com.yourProject">
 +   <uses-permission android:name="android.permission.MANAGE_DEVICE_ADMINS" />
     <application
         android:allowBackup="true"
@@ -25,8 +25,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-+        android:launchMode="singleTask"
-+        android:stateNotNeeded="true">
++       android:launchMode="singleTask"
++       android:stateNotNeeded="true">
 
         <activity android:name=".MainActivity">
             <intent-filter>
