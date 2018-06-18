@@ -19,7 +19,7 @@
     android:versionCode="1"
     android:versionName="1.0">
 
-    <uses-permission android:name="android.permission.MANAGE_DEVICE_ADMINS" />
++    <uses-permission android:name="android.permission.MANAGE_DEVICE_ADMINS" />
     
     ...
 
