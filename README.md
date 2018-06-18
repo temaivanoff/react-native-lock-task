@@ -17,7 +17,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example">
-    <uses-permission android:name="android.permission.MANAGE_DEVICE_ADMINS" />
++   <uses-permission android:name="android.permission.MANAGE_DEVICE_ADMINS" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
