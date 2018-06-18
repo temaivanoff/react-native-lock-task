@@ -77,6 +77,9 @@
 
 ```
 
+### set owner device adb
+`adb shell dpm set-device-owner com.yourProject/com.reactlibrary.MyAdmin`
+
 ## Usage
 ```javascript
 import RNLockTask from 'react-native-lock-task';
