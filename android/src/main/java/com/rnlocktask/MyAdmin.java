@@ -1,4 +1,4 @@
-package com.reactlibrary;
+package com.rnlocktask;
 
 import android.app.admin.DeviceAdminReceiver;
 
