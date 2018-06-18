@@ -19,11 +19,7 @@
     android:versionCode="1"
     android:versionName="1.0">
 
-    <!-- switchWifiSilence() -->
-    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
-
-    <!-- switchBluetoothSilence() -->
-    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+    <uses-permission android:name="android.permission.MANAGE_DEVICE_ADMINS" />
     
     ...
 
