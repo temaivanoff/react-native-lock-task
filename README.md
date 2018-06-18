@@ -50,6 +50,18 @@
 </manifest>
 ```
 
+
+**`yourProject/android/app/src/main/res/values/strings.xml`**
+
+```diff
+<resources>
+    <string name="app_name">yourNameApp</string>
+ +   <string name="sample_device_admin">yourNameApp</string>
+ +   <string name="sample_device_admin_description">yourNameAppTitle</string>
+</resources>
+
+```
+
 ## Usage
 ```javascript
 import RNLockTask from 'react-native-lock-task';
