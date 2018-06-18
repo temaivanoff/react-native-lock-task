@@ -9,7 +9,26 @@
 
 `$ react-native link react-native-lock-task`
 
-**iOS, Windows not supported**
+### Settings
+
+**`yourProject/android/app/src/main/AndroidManifest.xml`**
+
+```xml
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.systemsettingexample"
+    android:versionCode="1"
+    android:versionName="1.0">
+
+    <!-- switchWifiSilence() -->
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+
+    <!-- switchBluetoothSilence() -->
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+    
+    ...
+
+</manifest>
+```
 
 ## Usage
 ```javascript
