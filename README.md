@@ -25,8 +25,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:launchMode="singleTask"
-        android:stateNotNeeded="true">
++        android:launchMode="singleTask"
++        android:stateNotNeeded="true">
 
         <activity android:name=".MainActivity">
             <intent-filter>
@@ -36,7 +36,7 @@
             </intent-filter>
         </activity>
 
-+       <receiver android:name="com.example.root.test3.MyAdmin"
++       <receiver android:name="com.reactlibrary.MyAdmin"
 +           android:label="@string/sample_device_admin"
 +           android:description="@string/sample_device_admin_description"
 +           android:permission="android.permission.BIND_DEVICE_ADMIN">
