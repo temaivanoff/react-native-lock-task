@@ -62,6 +62,21 @@
 
 ```
 
+**`yourProject/android/app/src/main/res/xml/my_admin.xml`**
+
+```diff
++ <device-admin xmlns:android="http://schemas.android.com/apk/res/android">
++     <uses-policies>
++         <limit-password />
++         <watch-login />
++         <reset-password />
++         <force-lock />
++         <wipe-data />
++     </uses-policies>
++ </device-admin>
+
+```
+
 ## Usage
 ```javascript
 import RNLockTask from 'react-native-lock-task';
