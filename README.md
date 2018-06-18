@@ -9,41 +9,82 @@
 
 `$ react-native link react-native-lock-task`
 
-### Manual installation
+### Settings
+
+**`yourProject/android/app/src/main/AndroidManifest.xml`**
+
+```diff
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.yourProject">
++   <uses-permission android:name="android.permission.MANAGE_DEVICE_ADMINS" />
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
++       android:launchMode="singleTask"
++       android:stateNotNeeded="true">
+
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
++               <category android:name="android.intent.category.HOME" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
++       <receiver android:name="com.reactlibrary.MyAdmin"
++           android:label="@string/sample_device_admin"
++           android:description="@string/sample_device_admin_description"
++           android:permission="android.permission.BIND_DEVICE_ADMIN">
++           <meta-data android:name="android.app.device_admin"
++               android:resource="@xml/my_admin" />
++           <intent-filter>
++               <action android:name="android.app.action.DEVICE_ADMIN_ENABLED" />
++           </intent-filter>
++       </receiver>
+    </application>
+</manifest>
+```
 
 
-#### iOS
+**`yourProject/android/app/src/main/res/values/strings.xml`**
 
-Not supported
+```diff
+<resources>
+    <string name="app_name">yourNameApp</string>
++   <string name="sample_device_admin">yourNameApp</string>
++   <string name="sample_device_admin_description">yourNameAppTitle</string>
+</resources>
 
-#### Android
+```
 
-1. Open up `android/app/src/main/java/[...]/MainActivity.java`
-  - Add `import com.reactlibrary.RNLockTaskPackage;` to the imports at the top of the file
-  - Add `new RNLockTaskPackage()` to the list returned by the `getPackages()` method
-2. Append the following lines to `android/settings.gradle`:
-  	```
-  	include ':react-native-lock-task'
-  	project(':react-native-lock-task').projectDir = new File(rootProject.projectDir, 	'../node_modules/react-native-lock-task/android')
-  	```
-3. Insert the following lines inside the dependencies block in `android/app/build.gradle`:
-  	```
-      compile project(':react-native-lock-task')
-  	```
+**`yourProject/android/app/src/main/res/xml/my_admin.xml`**
 
-#### Windows
-[Read it! :D](https://github.com/ReactWindows/react-native)
+```diff
++ <device-admin xmlns:android="http://schemas.android.com/apk/res/android">
++     <uses-policies>
++         <limit-password />
++         <watch-login />
++         <reset-password />
++         <force-lock />
++         <wipe-data />
++     </uses-policies>
++ </device-admin>
 
-1. In Visual Studio add the `RNLockTask.sln` in `node_modules/react-native-lock-task/windows/RNLockTask.sln` folder to their solution, reference from their app.
-2. Open up your `MainPage.cs` app
-  - Add `using Lock.Task.RNLockTask;` to the usings at the top of the file
-  - Add `new RNLockTaskPackage()` to the `List<IReactPackage>` returned by the `Packages` method
+```
 
+## Set owner device adb
+* Settings --> Accounts --> Delete All
+* `adb shell dpm set-device-owner com.yourProject/com.reactlibrary.MyAdmin`
 
 ## Usage
 ```javascript
 import RNLockTask from 'react-native-lock-task';
 
-// TODO: What to do with the module?
-RNLockTask;
+RNLockTask.startLockTask();
+RNLockTask.stopLockTask();
 ```
