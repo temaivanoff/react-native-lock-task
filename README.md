@@ -11,11 +11,6 @@
 
 ### Manual installation
 
-
-#### iOS
-
-Not supported
-
 #### Android
 
 1. Open up `android/app/src/main/java/[...]/MainActivity.java`
@@ -30,15 +25,7 @@ Not supported
   	```
       compile project(':react-native-lock-task')
   	```
-
-#### Windows
-[Read it! :D](https://github.com/ReactWindows/react-native)
-
-1. In Visual Studio add the `RNLockTask.sln` in `node_modules/react-native-lock-task/windows/RNLockTask.sln` folder to their solution, reference from their app.
-2. Open up your `MainPage.cs` app
-  - Add `using Lock.Task.RNLockTask;` to the usings at the top of the file
-  - Add `new RNLockTaskPackage()` to the `List<IReactPackage>` returned by the `Packages` method
-
+**iOS, Windows not supported**
 
 ## Usage
 ```javascript
