@@ -77,8 +77,9 @@
 
 ```
 
-### set owner device adb
-`adb shell dpm set-device-owner com.yourProject/com.reactlibrary.MyAdmin`
+### Set owner device adb
+* Settings --> Accounts --> Delete All
+* `adb shell dpm set-device-owner com.yourProject/com.reactlibrary.MyAdmin`
 
 ## Usage
 ```javascript
