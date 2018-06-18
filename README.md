@@ -13,7 +13,7 @@
 
 **`yourProject/android/app/src/main/AndroidManifest.xml`**
 
-```xml
+```diff
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.systemsettingexample"
     android:versionCode="1"
