@@ -36,7 +36,7 @@
             </intent-filter>
         </activity>
 
-+       <receiver android:name="com.reactlibrary.MyAdmin"
++       <receiver android:name="com.rnlocktask.MyAdmin"
 +           android:label="@string/sample_device_admin"
 +           android:description="@string/sample_device_admin_description"
 +           android:permission="android.permission.BIND_DEVICE_ADMIN">
@@ -79,7 +79,7 @@
 
 ## Set owner device adb
 * Settings --> Accounts --> Delete All
-* `adb shell dpm set-device-owner com.yourProject/com.reactlibrary.MyAdmin`
+* `adb shell dpm set-device-owner com.yourProject/com.rnlocktask.MyAdmin`
 
 ## Usage
 ```javascript
