@@ -31,6 +31,6 @@
 ```javascript
 import RNLockTask from 'react-native-lock-task';
 
-// TODO: What to do with the module?
-RNLockTask;
+RNLockTask.startLockTask();
+RNLockTask.stopLockTask();
 ```
