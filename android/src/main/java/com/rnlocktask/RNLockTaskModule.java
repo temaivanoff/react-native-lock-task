@@ -6,6 +6,7 @@ import android.view.WindowManager;
 import android.app.admin.DevicePolicyManager;
 import android.content.ComponentName;
 import android.content.Context;
+import android.os.Build
 
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
@@ -29,7 +30,7 @@ public class RNLockTaskModule extends ReactContextBaseJavaModule {
   @ReactMethod
   public void startLockTask() {
     Activity mActivity = reactContext.getCurrentActivity();
-    if (mActivity != null) {
+    if (mActivity != null && Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
       DevicePolicyManager myDevicePolicyManager = (DevicePolicyManager) mActivity.getSystemService(Context.DEVICE_POLICY_SERVICE);
       ComponentName mDPM = new ComponentName(mActivity, MyAdmin.class);
 
@@ -46,7 +47,7 @@ public class RNLockTaskModule extends ReactContextBaseJavaModule {
   @ReactMethod
   public  void stopLockTask() {
     Activity mActivity = reactContext.getCurrentActivity();
-    if (mActivity != null) {
+    if (mActivity != null && Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
       mActivity.stopLockTask(); 
     }
   }
