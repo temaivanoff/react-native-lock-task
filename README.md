@@ -18,6 +18,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.yourProject">
 +   <uses-permission android:name="android.permission.MANAGE_DEVICE_ADMINS" />
++   <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
