@@ -30,18 +30,18 @@ public class RNLockTaskModule extends ReactContextBaseJavaModule {
   @ReactMethod
   public void startLockTask() {
     Activity mActivity = reactContext.getCurrentActivity();
-    if (mActivity != null && Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+    if (mActivity != null) {
       DevicePolicyManager myDevicePolicyManager = (DevicePolicyManager) mActivity.getSystemService(Context.DEVICE_POLICY_SERVICE);
       ComponentName mDPM = new ComponentName(mActivity, MyAdmin.class);
 
-        mActivity.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN |
+        /* mActivity.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN |
                         WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD |
                         WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED |
                         WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON,
                         WindowManager.LayoutParams.FLAG_FULLSCREEN |
                         WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD |
                         WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED |
-                        WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON);
+                        WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON); */
 
       if (myDevicePolicyManager.isDeviceOwnerApp(mActivity.getPackageName())) {
         String[] packages = {mActivity.getPackageName()};
@@ -56,7 +56,7 @@ public class RNLockTaskModule extends ReactContextBaseJavaModule {
   @ReactMethod
   public  void stopLockTask() {
     Activity mActivity = reactContext.getCurrentActivity();
-    if (mActivity != null && Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+    if (mActivity != null) {
       mActivity.stopLockTask();
     }
   }
