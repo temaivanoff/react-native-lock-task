@@ -88,4 +88,5 @@ import RNLockTask from 'react-native-lock-task';
 
 RNLockTask.startLockTask();
 RNLockTask.stopLockTask();
+RNLockTask.clearDeviceOwnerApp();
 ```
