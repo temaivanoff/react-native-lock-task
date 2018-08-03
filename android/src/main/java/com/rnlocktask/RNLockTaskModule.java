@@ -29,35 +29,44 @@ public class RNLockTaskModule extends ReactContextBaseJavaModule {
 
   @ReactMethod
   public  void clearDeviceOwnerApp() {
-    Activity mActivity = reactContext.getCurrentActivity();
-    if (mActivity != null) {
-      DevicePolicyManager myDevicePolicyManager = (DevicePolicyManager) mActivity.getSystemService(Context.DEVICE_POLICY_SERVICE);
-      myDevicePolicyManager.clearDeviceOwnerApp(mActivity.getPackageName());
+    try {
+      Activity mActivity = reactContext.getCurrentActivity();
+      if (mActivity != null) {
+        DevicePolicyManager myDevicePolicyManager = (DevicePolicyManager) mActivity.getSystemService(Context.DEVICE_POLICY_SERVICE);
+        myDevicePolicyManager.clearDeviceOwnerApp(mActivity.getPackageName());
+      }
+    } catch (Exception e) {
     }
   }
 
   @ReactMethod
   public void startLockTask() {
-    Activity mActivity = reactContext.getCurrentActivity();
-    if (mActivity != null) {
-      DevicePolicyManager myDevicePolicyManager = (DevicePolicyManager) mActivity.getSystemService(Context.DEVICE_POLICY_SERVICE);
-      ComponentName mDPM = new ComponentName(mActivity, MyAdmin.class);
+    try {
+      Activity mActivity = reactContext.getCurrentActivity();
+      if (mActivity != null) {
+        DevicePolicyManager myDevicePolicyManager = (DevicePolicyManager) mActivity.getSystemService(Context.DEVICE_POLICY_SERVICE);
+        ComponentName mDPM = new ComponentName(mActivity, MyAdmin.class);
 
-      if (myDevicePolicyManager.isDeviceOwnerApp(mActivity.getPackageName())) {
-        String[] packages = {mActivity.getPackageName()};
-        myDevicePolicyManager.setLockTaskPackages(mDPM, packages);
-        mActivity.startLockTask();
-      } else {
-        mActivity.startLockTask();
+        if (myDevicePolicyManager.isDeviceOwnerApp(mActivity.getPackageName())) {
+          String[] packages = {mActivity.getPackageName()};
+          myDevicePolicyManager.setLockTaskPackages(mDPM, packages);
+          mActivity.startLockTask();
+        } else {
+          mActivity.startLockTask();
+        }
       }
+    } catch (Exception e) {
     }
   }
 
   @ReactMethod
   public  void stopLockTask() {
-    Activity mActivity = reactContext.getCurrentActivity();
-    if (mActivity != null) {
-      mActivity.stopLockTask();
+    try {
+      Activity mActivity = reactContext.getCurrentActivity();
+      if (mActivity != null) {
+        mActivity.stopLockTask();
+      }
+    } catch (Exception e) {
     }
   }
 }
