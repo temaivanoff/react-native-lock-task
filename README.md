@@ -77,6 +77,9 @@
 + </device-admin>
 
 ```
+## Reinstall application
+* Start your emulator
+* Install project 
 
 ## Set owner device adb
 * Settings --> Accounts --> Delete All
