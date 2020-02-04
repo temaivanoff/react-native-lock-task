@@ -1,7 +1,7 @@
 
 {
   "name": "react-native-lock-task",
-  "version": "1.0.8",
+  "version": "1.0.10",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -15,8 +15,5 @@
   "keywords": [
     "react-native"
   ],
-  "author": "",
-  "peerDependencies": {
-    "react-native": "^0.41.2"
-  }
+  "author": ""
 }
