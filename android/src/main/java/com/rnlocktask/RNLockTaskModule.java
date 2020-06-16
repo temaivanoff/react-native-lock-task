@@ -10,6 +10,9 @@ import com.facebook.react.bridge.Promise;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
+import com.facebook.react.bridge.ReadableArray;
+
+import java.util.ArrayList;
 
 public class RNLockTaskModule extends ReactContextBaseJavaModule {
 
@@ -45,7 +48,7 @@ public class RNLockTaskModule extends ReactContextBaseJavaModule {
   }
 
   @ReactMethod
-  public void startLockTask(Promise promise) {
+  public void startLockTask(ReadableArray additionalPackages, Promise promise) {
     try {
       Activity mActivity = getCurrentActivity();
       if (mActivity != null) {
@@ -53,8 +56,12 @@ public class RNLockTaskModule extends ReactContextBaseJavaModule {
         ComponentName mDPM = new ComponentName(mActivity, MyAdmin.class);
 
         if (myDevicePolicyManager.isDeviceOwnerApp(mActivity.getPackageName())) {
-          String[] packages = {mActivity.getPackageName()};
-          myDevicePolicyManager.setLockTaskPackages(mDPM, packages);
+          ArrayList<String> packages = new ArrayList<>();
+          packages.add(mActivity.getPackageName());
+          for (int i = 0; i < additionalPackages.size(); i++) {
+            packages.add(additionalPackages.getString(i));
+          }
+          myDevicePolicyManager.setLockTaskPackages(mDPM, packages.toArray(new String[0]));
           mActivity.startLockTask();
           promise.resolve(LOCKED_TASK_AS_OWNER);
         } else {
