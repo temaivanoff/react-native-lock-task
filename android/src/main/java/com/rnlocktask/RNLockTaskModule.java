@@ -48,7 +48,7 @@ public class RNLockTaskModule extends ReactContextBaseJavaModule {
   }
 
   @ReactMethod
-  public void startLockTask(ReadableArray additionalPackages, Promise promise) {
+  public void startLockTaskWith(ReadableArray additionalPackages, Promise promise) {
     try {
       Activity mActivity = getCurrentActivity();
       if (mActivity != null) {
@@ -58,8 +58,10 @@ public class RNLockTaskModule extends ReactContextBaseJavaModule {
         if (myDevicePolicyManager.isDeviceOwnerApp(mActivity.getPackageName())) {
           ArrayList<String> packages = new ArrayList<>();
           packages.add(mActivity.getPackageName());
-          for (int i = 0; i < additionalPackages.size(); i++) {
-            packages.add(additionalPackages.getString(i));
+          if(additionalPackages != null){
+            for (int i = 0; i < additionalPackages.size(); i++) {
+              packages.add(additionalPackages.getString(i));
+            }
           }
           myDevicePolicyManager.setLockTaskPackages(mDPM, packages.toArray(new String[0]));
           mActivity.startLockTask();
@@ -74,6 +76,11 @@ public class RNLockTaskModule extends ReactContextBaseJavaModule {
     } catch (Exception e) {
       promise.reject(e);
     }
+  }
+
+  @ReactMethod
+  public void startLockTask(Promise promise) {
+    startLockTaskWith(null, promise);
   }
 
   @ReactMethod
