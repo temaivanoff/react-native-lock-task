@@ -90,6 +90,7 @@
 import RNLockTask from 'react-native-lock-task';
 
 RNLockTask.startLockTask();
+RNLockTask.startLockTaskWith(["com.google.android.youtube", "com.sega.sonicdash"]);
 RNLockTask.stopLockTask();
 RNLockTask.clearDeviceOwnerApp();
 ```
