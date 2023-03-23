@@ -2,9 +2,11 @@
 package com.rnlocktask;
 
 import android.app.Activity;
+import android.app.ActivityManager;
 import android.app.admin.DevicePolicyManager;
 import android.content.ComponentName;
 import android.content.Context;
+import android.os.Build;
 
 import com.facebook.react.bridge.Promise;
 import com.facebook.react.bridge.ReactApplicationContext;
@@ -22,6 +24,7 @@ public class RNLockTaskModule extends ReactContextBaseJavaModule {
   private static final String LOCKED_TASK = "LOCKED_TASK";
   private static final String LOCKED_TASK_AS_OWNER = "LOCKED_TASK_AS_OWNER";
   private static final String UNLOCKED_TASK = "UNLOCKED_TASK";
+  private static final String TAG = "RNLockTaskModule";
 
   public RNLockTaskModule(ReactApplicationContext reactContext) {
     super(reactContext);
@@ -30,6 +33,29 @@ public class RNLockTaskModule extends ReactContextBaseJavaModule {
   @Override
   public String getName() {
     return "RNLockTask";
+  }
+
+  @ReactMethod
+  public void isAppInLockTaskMode(Promise promise) {
+    try {
+      Activity mActivity = getCurrentActivity();
+      if (mActivity != null) {
+        ActivityManager activityManager = (ActivityManager) mActivity.getSystemService(Context.ACTIVITY_SERVICE);
+
+        // When SDK version is 23
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+          int lockTaskMode = activityManager.getLockTaskModeState();
+          promise.resolve(lockTaskMode == ActivityManager.LOCK_TASK_MODE_PINNED);
+        }
+
+        //When SDK version <=21 and <23. This API is deprecated in 23.
+        else {
+          promise.resolve(activityManager.isInLockTaskMode());
+        }
+      }
+    } catch (Exception e) {
+      promise.reject(e);
+    }
   }
 
   @ReactMethod
