@@ -88,7 +88,7 @@
 ## Usage
 ```javascript
 import RNLockTask from 'react-native-lock-task';
-
+RNLockTask.isAppInLockTaskMode();
 RNLockTask.startLockTask();
 RNLockTask.startLockTaskWith(["com.google.android.youtube", "com.sega.sonicdash"]);
 RNLockTask.stopLockTask();
