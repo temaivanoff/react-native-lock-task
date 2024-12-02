@@ -77,6 +77,19 @@
 + </device-admin>
 
 ```
+
+Add the library types to your project by creating (or editing) a `index.d.ts` in your project root directory with the line:
+```
+declare module 'react-native-lock-task';
+```
+and then add it to your `tsconfig.json`
+```
+{
+  ...
+  "include" : ["index.d.ts"]
+}
+```
+
 ## Reinstall application
 * Start your emulator
 * Install project 

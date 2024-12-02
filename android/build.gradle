@@ -2,7 +2,6 @@
 buildscript {
     repositories {
         google()
-        jcenter()
     }
 
     dependencies {
@@ -13,11 +12,12 @@ buildscript {
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 29
+    package "com.rnlocktask"
+    compileSdkVersion 35
 
     defaultConfig {
         minSdkVersion 21
-        targetSdkVersion 29
+        targetSdkVersion 35
         versionCode 1
         versionName "1.0"
     }
